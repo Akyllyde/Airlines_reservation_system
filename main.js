@@ -73,7 +73,7 @@ function createWindow () {
     }
   })
 
-  mainWindow.loadFile('./window/main/index.html');
+  mainWindow.loadFile('./window/main/frame/login.html');
 
   const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
   mainWindow.setMenu(mainMenu)
@@ -170,8 +170,29 @@ var connection = mysql.createConnection({
   database: "testdb",
 });
 
+
+
+
+ipcMain.on("sign-in-msg", (event, data) => {
+  let sql = `SELECT pass, role FROM user_data WHERE email='${data.e}';`;
+
+  connection
+    .connect()
+    .then(connection.query(sql))
+    .then((result) => {
+      if (result === []) {
+        event.reply("sign-in-reply", "User doesn't exist");
+      } else if(data.pwd === result){
+
+        event.reply("sign-in-reply", result);
+      }
+    })
+    .catch((err) => event.reply("sign-in-reply", err));
+});
+
+
 ipcMain.on("sign-up-msg", (event, data) => {
-  let sql = `INSERT INTO user_data(email,pass,role) VALUES(${data.e},${data.pwd},user);`;
+  let sql = `INSERT INTO user_data(email,pass,role) VALUES('${data.e}','${data.pwd}','user');`;
 
   connection
     .connect()
@@ -181,19 +202,6 @@ ipcMain.on("sign-up-msg", (event, data) => {
 });
 
 
-ipcMain.on("sign-in-msg", (event, data) => {
-  let sql = `SELECT pass, role FROM user_data WHERE email=${data.e};`;
-
-  connection
-    .connect()
-    .then(connection.query(sql))
-    .then((result) =>
-      result === []
-        ? event.reply("sign-in-reply", "User doesn't exist")
-        : event.reply("sign-in-reply", result)
-    )
-    .catch((err) => event.reply("sign-in-reply", err));
-});
 
 
 
