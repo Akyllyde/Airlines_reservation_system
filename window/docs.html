@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Supercell Menu</title>
+  <style type="text/css" media="all">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      padding: 10%;
+      background-color: #ebebeb;
+      font-family: arial;
+    }
+
+    .menu {
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 3px 3px 20px rgba(0, 0, 0, .2),
+        -3px -3px 20px rgba(0, 0, 0, .2);
+    }
+
+    .card {
+      width: 80%;
+      margin: auto;
+    }
+
+    input[type=radio],
+    .dropdown {
+      display: none;
+    }
+
+    p {
+      padding: 10% 0;
+    }
+
+    label>p {
+      font-weight: 600;
+      font-size: 1.1em;
+      text-transform: uppercase;
+      position: relative;
+      padding-right: 20%;
+      border-top: 2px solid darkgray;
+    }
+
+    label:nth-of-type(1)>p {
+      border: none;
+    }
+
+    label>p span {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      display: inline-block;
+      height: 25px;
+      width: 25px;
+      border-radius: 50%;
+      border: 2.5px solid #5280ED;
+      transition: 0.5s ease;
+    }
+
+    label>p span::after,
+    label>p span::before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      content: "";
+      background-color: #5280ED;
+      border-radius: 10px;
+      transition: 0.5s ease;
+    }
+
+    label>p span::before {
+      width: 55%;
+      height: 2.5px;
+    }
+
+    label>p span::after {
+      width: 2.5px;
+      height: 55%;
+    }
+
+    input[type=radio]:checked+label+.dropdown {
+      display: block;
+    }
+
+    input[type=radio]:checked+label>p span {
+      transform: rotateZ(180deg)translateY(50%);
+      transform-origin: center;
+    }
+
+    input[type=radio]:checked+label>p span::after {
+      opacity: 0;
+    }
+
+    .dropdown p {
+      border-top: 2px solid lightgray;
+      padding-right: 30%;
+      position: relative;
+      font-size: 0.9em;
+      color: #5280ED;
+    }
+
+    .dropdown p span {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="menu">
+    <div class="card">
+      <input type="radio" name="fall" id="tech" />
+      <label for="tech">
+        <p>Technical Issues<span></span></p>
+      </label>
+      <div class="dropdown">
+        <p>How to start a new game<span>&#10095;</span></p>
+        <p>Sending bug report<span>&#10095;</span></p>
+      </div>
+      <input type="radio" name="fall" id="supp" />
+      <label for="supp">
+        <p>Support<span></span></p>
+      </label>
+      <div class="dropdown">
+        <p>Air support<span>&#10095;</span></p>
+        <p>Naval support<span>&#10095;</span></p>
+      </div>
+      <input type="radio" name="fall" id="feed" />
+      <label for="feed">
+        <p>Feedback<span></span></p>
+      </label>
+      <div class="dropdown">
+        <p>Issues and bugs<span>&#10095;</span></p>
+        <p>Feature request and suggestions<span>&#10095;</span></p>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" charset="utf-8">
+    var allRadios = document.getElementsByName('fall');
+    var booRadio, i = 0;
+    for (i = 0; i < allRadios.length; i++) {
+      allRadios[i].onclick = function () {
+        if (booRadio == this) {
+          this.checked = false;
+          booRadio = null;
+        }
+        else {
+          booRadio = this;
+        }
+      };
+    }
+  </script>
+</body>
+
+</html>

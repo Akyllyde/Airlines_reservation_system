@@ -1,12 +1,15 @@
 {
-  "name": "electron-quick-start",
+  "name": "airlines-reservation-system",
   "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "description": "A Airlines reservation system software",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Akyllyde/Ars.git"
+  },
   "keywords": [
     "Electron",
     "quick",
@@ -15,8 +18,15 @@
     "demo"
   ],
   "author": "GitHub",
-  "license": "CC0-1.0",
+  "license": "MIT",
   "devDependencies": {
     "electron": "^16.0.2"
-  }
+  },
+  "dependencies": {
+    "mysql": "^2.18.1"
+  },
+  "bugs": {
+    "url": "https://github.com/electron/electron-quick-start/issues"
+  },
+  "homepage": "https://github.com/electron/electron-quick-start#readme"
 }
