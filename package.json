@@ -1,10 +1,11 @@
 {
   "name": "airlines-reservation-system",
   "version": "1.0.0",
-  "description": "A Airlines reservation system software",
+  "description": "An Airlines reservation system software",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "tww": "npx tailwindcss --watch -i ./tailwind.base.css -o ./window/main/style/tailwind_out.css"
   },
   "repository": {
     "type": "git",
@@ -12,21 +13,26 @@
   },
   "keywords": [
     "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
+    "airplanes",
+    "booking",
+    "ticket",
+    "planes",
+    "airlines",
+    "reservation",
+    "system"
   ],
   "author": "GitHub",
   "license": "MIT",
-  "devDependencies": {
-    "electron": "^16.0.2"
-  },
   "dependencies": {
+    "d3": "^7.2.1",
     "mysql": "^2.18.1"
   },
   "bugs": {
     "url": "https://github.com/electron/electron-quick-start/issues"
   },
-  "homepage": "https://github.com/electron/electron-quick-start#readme"
+  "homepage": "https://github.com/electron/electron-quick-start#readme",
+  "devDependencies": {
+    "electron": "^16.0.5",
+    "tailwindcss": "^3.0.7"
+  }
 }

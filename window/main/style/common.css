@@ -1,0 +1,78 @@
+html::-webkit-scrollbar {
+  display: none;
+}
+
+.burger {
+  filter: url(#gooeyness);
+}
+
+.x {
+  transform: scale(0);
+  transition: transform 400ms;
+}
+
+.line {
+  fill: none;
+  stroke-width: 6px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transform-origin: 50%;
+  transition: stroke-dasharray 500ms 200ms, stroke-dashoffset 500ms 200ms,
+    transform 500ms 200ms;
+}
+
+.x .line {
+  stroke-width: 5.5px;
+}
+
+.active .line {
+  transition: stroke-dasharray 500ms, stroke-dashoffset 500ms, transform 500ms;
+}
+
+.active .x {
+  transform: scale(1);
+  transition: transform 400ms 350ms;
+}
+
+/* Die vierte teller */
+.plate .x {
+  transition: transform 400ms;
+}
+
+.plate .line {
+  transform-origin: 50%;
+  transition: transform 400ms 100ms;
+}
+
+.active.plate .line {
+  transition: transform 400ms;
+}
+
+.active.plate .line1 {
+  transform: translateX(18px) translateY(-3px) rotate(-45deg) scale(0.7);
+}
+
+.active.plate .line2 {
+  transform: translateX(-18px) translateY(-3px) rotate(45deg) scale(0.7);
+}
+
+.active.plate .line3 {
+  transform: translateY(0px) rotate(45deg) scale(0.7);
+}
+
+.active.plate .line4 {
+  transform: translateY(0px) rotate(-45deg) scale(0.7);
+}
+
+.active.plate .line5 {
+  transform: translateX(18px) translateY(3px) rotate(45deg) scale(0.7);
+}
+
+.active.plate .line6 {
+  transform: translateX(-18px) translateY(3px) rotate(-45deg) scale(0.7);
+}
+
+.active.plate .x {
+  transition: transform 400ms 100ms;
+  transform: scale(1);
+}

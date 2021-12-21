@@ -15,7 +15,7 @@ body {
       rgba(57, 173, 219, 0.25) 0%,
       rgba(42, 60, 87, 0.4) 100%
     ),
-    linear-gradient(135deg, #670d10 0%, #092756 100%);
+    linear-gradient(135deg, #670d10 0%, #092756 70%);
 }
 
 * {
@@ -61,7 +61,6 @@ body {
 }
 
 .login-html .tab,
-.login-form .group .label,
 .login-form .group .button {
   text-transform: uppercase;
 }
@@ -159,6 +158,10 @@ body {
   transform: rotate(0);
 }
 
+input:not([type="checkbox"]) {
+  caret-color: #5c91ff;
+}
+
 .warn {
   display: none;
   margin-top: 5vh;
@@ -167,6 +170,7 @@ body {
   background-color: #092756;
   border: 1px solid #1161ee;
   border-radius: 15px;
-  font-size: 1vw;
+  font-size: 2vw;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   text-align: center;
 }

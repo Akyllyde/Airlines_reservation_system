@@ -4,8 +4,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Supercell Menu</title>
   <style type="text/css" media="all">
+    .drag{
+      background: transparent;
+      width: 100vw;
+      height: 35px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      -webkit-app-region: drag;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -117,6 +129,7 @@
 </head>
 
 <body>
+  <div class="drag"></div>
   <div class="menu">
     <div class="card">
       <input type="radio" name="fall" id="tech" />

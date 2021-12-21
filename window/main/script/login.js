@@ -1,4 +1,5 @@
-const body = document.querySelector("body");
+const { ipcRenderer } = require("electron");
+
 const sign_in_htm = document.querySelector(".sign-in-htm");
 const sign_up_htm = document.querySelector(".sign-up-htm");
 
@@ -9,11 +10,7 @@ sign_in_htm.addEventListener("submit", (e) => {
 
   ipcRenderer.send("sign-in-msg", { e: email, pwd: pass });
   ipcRenderer.on("sign-in-reply", (event, reply) => {
-    if (Array.isArray(reply)) {
-      
-    } else {
-      warner(reply);
-    }
+    warner(reply);
   });
 });
 
@@ -27,7 +24,7 @@ sign_up_htm.addEventListener("submit", (e) => {
   if (pass === passAgain) {
     ipcRenderer.send("sign-up-msg", {e:email,pwd:pass});
     ipcRenderer.on("sign-up-reply", (event, reply) => {
-      reply === 'success' ? loadHome() : warner(reply)
+      warner(reply)
     });
   } else {
     warner("Passwords don't match");
