@@ -2,6 +2,47 @@ html::-webkit-scrollbar {
   display: none;
 }
 
+
+#dashboard:checked~nav label[for="dashboard"]{
+  background-color: rgb(17, 24, 39);
+  color: white;
+}
+#team:checked~nav label[for="team"]{
+  background-color: rgb(17, 24, 39);
+  color: white;
+}
+#projects:checked~nav label[for="projects"]{
+  background-color: rgb(17, 24, 39);
+  color: white;
+}
+#calendar:checked~nav label[for="calendar"]{
+  background-color: rgb(17, 24, 39);
+  color: white;
+}
+#reports:checked~nav label[for="reports"]{
+  background-color: rgb(17, 24, 39);
+  color: white;
+}
+
+
+#dashboard:checked~div #dashboard_card{
+  display: block;
+}
+#team:checked~div #team_card{
+  display: block;
+}
+#projects:checked~div #projects_card{
+  display: block;
+}
+#calendar:checked~div #calendar_card{
+  display: block;
+}
+#reports:checked~div #reports_card{
+  display: block;
+}
+
+
+
 .burger {
   filter: url(#gooeyness);
 }
@@ -75,4 +116,127 @@ html::-webkit-scrollbar {
 .active.plate .x {
   transition: transform 400ms 100ms;
   transform: scale(1);
+}
+
+
+
+
+
+
+.bar-chart rect:nth-of-type(1){
+  animation: bunce1 1s ease;
+}
+
+@keyframes bunce1 {
+  from{
+    y: 500
+  }
+  to{
+    y: 400
+  }
+}
+.bar-chart rect:nth-of-type(2){
+  animation: bunce2 1s ease;
+}
+
+@keyframes bunce2 {
+  from{
+    y: 500
+  }
+  to{
+    y: 450
+  }
+}
+.bar-chart rect:nth-of-type(3){
+  animation: bunce3 1s ease;
+}
+
+@keyframes bunce3 {
+  from{
+    y: 500
+  }
+  to{
+    y: 200
+  }
+}
+.bar-chart rect:nth-of-type(4){
+  animation: bunce4 1s ease;
+}
+
+@keyframes bunce4 {
+  from{
+    y: 500
+  }
+  to{
+    y: 460
+  }
+}
+.bar-chart rect:nth-of-type(5){
+  animation: bunce5 1s ease;
+}
+
+@keyframes bunce5 {
+  from{
+    y: 500
+  }
+  to{
+    y: 350
+  }
+}
+.bar-chart rect:nth-of-type(6){
+  animation: bunce6 1s ease;
+}
+
+@keyframes bunce6 {
+  from{
+    y: 500
+  }
+  to{
+    y: 250
+  }
+}
+.bar-chart rect:nth-of-type(7){
+  animation: bunce7 1s ease;
+}
+
+@keyframes bunce7 {
+  from{
+    y: 500
+  }
+  to{
+    y: 50
+  }
+}
+
+
+
+
+.bar-chart path {
+  stroke-dasharray: 1190;
+  animation: dash 1s linear;
+}
+
+@keyframes dash {
+  from {
+    stroke-dashoffset: 1190;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+
+
+.flow {
+  animation: flow 0.3s ease;
+}
+
+@keyframes flow {
+  from {
+    transform: translateY(15vh);
+  }
+
+  to {
+    transform: translateY(0);
+  }
 }

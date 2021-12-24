@@ -18,6 +18,12 @@
 
 
   <div class="min-h-full">
+    <input type="radio" name="menu-control" id="dashboard" class="hidden" checked>
+    <input type="radio" name="menu-control" id="team" class="hidden">
+    <input type="radio" name="menu-control" id="projects" class="hidden">
+    <input type="radio" name="menu-control" id="calendar" class="hidden">
+    <input type="radio" name="menu-control" id="reports" class="hidden">
+
     <nav class="bg-gray-700">
       <input type="checkbox" id="mb-menu" class="hidden peer">
       <div class="mx-auto px-4 sm:px-6 lg:px-8">
@@ -30,7 +36,7 @@
               <div id="nav_div" class="ml-10 flex items-baseline space-x-4">
                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                 <label for="dashboard"
-                  class="bg-gray-900 text-white hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Dashboard</label>
+                  class="text-gray-300 hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Dashboard</label>
 
                 <label for="team"
                   class="text-gray-300 hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Team</label>
@@ -90,8 +96,8 @@
             <label for="mb-menu"
               class="plate w-11 h-11 bg-gray-800 p-2 rounded-md inline-flex items-center justify-center hover:border-2 hover:border-gray-400"
               aria-controls="mobile-menu" aria-expanded="false" onclick="this.classList.toggle('active')">
-              <svg class="burger group h-10 w-10 absolute rounded-md bg-gray-800 hover:bg-gray-700" version="1.1" height="100" width="100"
-                viewBox="0 0 100 100">
+              <svg class="burger group h-10 w-10 absolute rounded-md bg-gray-800 hover:bg-gray-700" version="1.1"
+                height="100" width="100" viewBox="0 0 100 100">
                 <path class="line line1 stroke-gray-400 group-hover:stroke-white" d="M 50,35 H 30" />
                 <path class="line line2 stroke-gray-400 group-hover:stroke-white" d="M 50,35 H 70" />
                 <path class="line line3 stroke-gray-400 group-hover:stroke-white" d="M 50,50 H 30" />
@@ -99,8 +105,8 @@
                 <path class="line line5 stroke-gray-400 group-hover:stroke-white" d="M 50,65 H 30" />
                 <path class="line line6 stroke-gray-400 group-hover:stroke-white" d="M 50,65 H 70" />
               </svg>
-              <svg class="x group h-10 w-10 absolute rounded-md bg-gray-800 hover:bg-gray-700" version="1.1" height="100" width="100"
-                viewBox="0 0 100 100">
+              <svg class="x group h-10 w-10 absolute rounded-md bg-gray-800 hover:bg-gray-700" version="1.1"
+                height="100" width="100" viewBox="0 0 100 100">
                 <path class="line stroke-gray-400 group-hover:stroke-white" d="M 34,32 L 66,68" />
                 <path class="line stroke-gray-400 group-hover:stroke-white" d="M 66,32 L 34,68" />
               </svg>
@@ -168,8 +174,6 @@
 
 
 
-  
-      
 
 
 
@@ -182,65 +186,120 @@
 
 
 
-        <div>
-          <input type="radio" name="menu-control" id="dashboard" class="peer hidden" checked>
-          <main class="w-screen hidden peer-checked:block">
-            <div class="py-6 sm:px-6 lg:px-8">
-              <div class="border-2 border-dashed border-gray-400 rounded-lg h-96 flex items-center justify-center">
-                <svg class="bar-chart w-96 h-96" viewBox="0 0 500 500"></svg>
-              </div>
-            </div>
-          </main>
+
+
+    <div>
+
+      <main class="flow w-screen hidden" id="dashboard_card">
+        <div class="py-6 sm:px-6 lg:px-8">
+          <div class="border-2 border-dashed border-gray-400 rounded-lg h-96 flex items-center justify-center">
+            <svg class="bar-chart w-64 h-44" viewBox="0 0 735 525" width="735" height="525">
+              <line x1="0" y1="0" x2="0" y2="500" stroke="black" stroke-width="5"></line>
+              <line x1="0" y1="500" x2="735" y2="500" stroke="black" stroke-width="5"></line>
+
+
+              <rect x="5" y="400" height="100" width="100" fill="#3e4d74" fill-opacity="0.7">
+                <title>100</title>
+              </rect>
+              <rect x="110" y="450" height="50" width="100" fill="#3e4d74" fill-opacity="0.7">
+                <title>50</title>
+              </rect>
+              <rect x="215" y="200" height="300" width="100" fill="#3e4d74" fill-opacity="0.7">
+                <title>300</title>
+              </rect>
+              <rect x="320" y="460" height="40" width="100" fill="#3e4d74" fill-opacity="0.7">
+                <title>40</title>
+              </rect>
+              <rect x="425" y="350" height="150" width="100" fill="#3e4d74" fill-opacity="0.7">
+                <title>150</title>
+              </rect>
+              <rect x="530" y="250" height="250" width="100" fill="#3e4d74" fill-opacity="0.7">
+                <title>250</title>
+              </rect>
+              <rect x="635" y="50" height="450" width="100" fill="#3e4d74" fill-opacity="0.7">
+                <title>450</title>
+              </rect>
+
+              <path d="M 55 400 L 160 450 L 265 200 L 370 460 L 475 350 L 580 250 L 685 50" stroke="red"
+                stroke-width="3" fill="none" stroke-linejoin="round"></path>
+
+              <g stroke="red" stroke-width="5" fill="red">
+                <circle cx="55" cy="400" r="3" />
+                <circle cx="160" cy="450" r="3" />
+                <circle cx="265" cy="200" r="3" />
+                <circle cx="370" cy="460" r="3" />
+                <circle cx="475" cy="350" r="3" />
+                <circle cx="580" cy="250" r="3" />
+                <circle cx="685" cy="50" r="3" />
+              </g>
+
+              <g font-size="25" font-family="sans-serif" font-weight="bolder" fill="black" stroke="none"
+                text-anchor="middle">
+                <text x="55" y="525" dx="0">SUN</text>
+                <text x="160" y="525" dx="0">MON</text>
+                <text x="265" y="525" dx="0">TUE</text>
+                <text x="370" y="525" dx="0">WED</text>
+                <text x="475" y="525" dx="0">THU</text>
+                <text x="580" y="525" dx="0">FRI</text>
+                <text x="685" y="525" dx="0">SAT</text>
+              </g>
+              <!--100,50,300,40,150,250,450
+                    var largest = Math.max.apply(0, data); -->
+            </svg>
+          </div>
         </div>
-        
-        
-        
-        <div>
-          <input type="radio" name="menu-control" id="team" class="peer hidden">
-          <main class="w-screen hidden peer-checked:block">
-            <div class="py-6 sm:px-6 lg:px-8">
-              <div class="border-2 border-dashed border-gray-400 rounded-lg h-96">
-                Team
-              </div>
-            </div>
-          </main>
+      </main>
+    </div>
+
+
+
+    <div>
+
+      <main class="flow w-screen hidden" id="team_card">
+        <div class="py-6 sm:px-6 lg:px-8">
+          <div class="border-2 border-dashed border-gray-400 rounded-lg h-96">
+            <input type="text" name="" id="food">
+            <button onclick="document.getElementById('projects').checked = true">next</button>
+          </div>
         </div>
-        
-        
-        <div>
-          <input type="radio" name="menu-control" id="projects" class="peer hidden">
-          <main class="w-screen hidden peer-checked:block">
-            <div class="py-6 sm:px-6 lg:px-8">
-              <div class="border-2 border-dashed border-gray-400 rounded-lg h-96">
-                Projects
-              </div>
-            </div>
-          </main>
+      </main>
+    </div>
+
+
+    <div>
+
+      <main class="flow w-screen hidden" id="projects_card">
+        <div class="py-6 sm:px-6 lg:px-8">
+          <div class="border-2 border-dashed border-gray-400 rounded-lg h-96">
+            Projects
+          </div>
         </div>
-        
+      </main>
+    </div>
 
-        <div>
-          <input type="radio" name="menu-control" id="calendar" class="peer hidden">
-          <main class="w-screen hidden peer-checked:block">
-            <div class="py-6 sm:px-6 lg:px-8">
-              <div class="border-2 border-dashed border-gray-400 rounded-lg h-96">
-                Calendar
-              </div>
-            </div>
-          </main>
+
+    <div>
+
+      <main class="flow w-screen hidden" id="calendar_card">
+        <div class="py-6 sm:px-6 lg:px-8">
+          <div class="border-2 border-dashed border-gray-400 rounded-lg h-96">
+            Calendar
+          </div>
         </div>
-        
-        
-        <div>
-          <input type="radio" name="menu-control" id="reports" class="peer hidden">
-          <main class="w-screen hidden peer-checked:block">
-            <div class="py-6 sm:px-6 lg:px-8">
-              <div class="border-2 border-dashed border-gray-400 rounded-lg h-96">
-                Reports
-              </div>
-            </div>
-          </main>
+      </main>
+    </div>
+
+
+    <div>
+
+      <main class="flow w-screen hidden" id="reports_card">
+        <div class="py-6 sm:px-6 lg:px-8">
+          <div class="border-2 border-dashed border-gray-400 rounded-lg h-96">
+            Reports
+          </div>
         </div>
+      </main>
+    </div>
 
 
 
@@ -254,7 +313,7 @@
 
 
 
-  
+
 
 
 
@@ -302,47 +361,5 @@
 
 
 
-
-
-
-
-
-<script type="module">
-
-  import * as d3 from "https://cdn.skypack.dev/d3@7";
-
-  let data = [100,50,300,40,350,250]
-
-  const drawChart = async ()=>{
-  const svgWidth = 500
-  const svgHeight = 500
-  const barPadding = 5
-  const barWidth = svgWidth / data.length
-
-  let svg = d3.select("svg.bar-chart");
-  let width = svg
-      .attr("width", svgWidth)
-      .attr("height", svgHeight);
-
-  svg
-      .selectAll("rect")
-      .data(data)
-      .enter()
-      .append("rect")
-      .attr("y", (d)=> svgHeight - d)
-      .attr("height", (d)=> d)
-      .attr("width", ()=> barWidth - barPadding)
-      .attr("transform", (d, i)=>{
-        let translate = [barWidth * i, 0]
-        return `translate(${translate})`
-      })
-      .style("fill", "steelblue")
-
-
-}
-
-drawChart()
-  
-  </script>
 
 </html>
