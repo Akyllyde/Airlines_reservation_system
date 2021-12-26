@@ -1,13 +1,13 @@
-html::-webkit-scrollbar {
+/* *::-webkit-scrollbar {
   display: none;
-}
+} */
 
-
+/* menu color change on click */
 #dashboard:checked~nav label[for="dashboard"]{
   background-color: rgb(17, 24, 39);
   color: white;
 }
-#team:checked~nav label[for="team"]{
+#flights:checked~nav label[for="flights"]{
   background-color: rgb(17, 24, 39);
   color: white;
 }
@@ -25,10 +25,11 @@ html::-webkit-scrollbar {
 }
 
 
+/* show screens on click */
 #dashboard:checked~div #dashboard_card{
   display: block;
 }
-#team:checked~div #team_card{
+#flights:checked~div #flights_card{
   display: block;
 }
 #projects:checked~div #projects_card{
@@ -42,7 +43,7 @@ html::-webkit-scrollbar {
 }
 
 
-
+/* mobile menu animation */
 .burger {
   filter: url(#gooeyness);
 }
@@ -75,7 +76,6 @@ html::-webkit-scrollbar {
   transition: transform 400ms 350ms;
 }
 
-/* Die vierte teller */
 .plate .x {
   transition: transform 400ms;
 }
@@ -118,11 +118,7 @@ html::-webkit-scrollbar {
   transform: scale(1);
 }
 
-
-
-
-
-
+/* graph animation */
 .bar-chart rect:nth-of-type(1){
   animation: bunce1 1s ease;
 }
@@ -208,9 +204,6 @@ html::-webkit-scrollbar {
   }
 }
 
-
-
-
 .bar-chart path {
   stroke-dasharray: 1190;
   animation: dash 1s linear;
@@ -225,18 +218,100 @@ html::-webkit-scrollbar {
   }
 }
 
-
-
-.flow {
-  animation: flow 0.3s ease;
+/* trip type animation */
+#oneway:checked~.trip_type_label label[for="oneway"]{
+  color: white;
+}
+#roundtrip:checked~.trip_type_label label[for="roundtrip"]{
+  color: white;
+}
+#oneway:checked~.trip_type_label div{
+  width: 76px;
+  left: 0;
+}
+#roundtrip:checked~.trip_type_label div{
+  width: 90px;
+  left: 100%;
+  transform: translateX(-100%);
+  -webkit-transform: translateX(-100%);
+  -moz-transform: translateX(-100%);
+  -ms-transform: translateX(-100%);
+  -o-transform: translateX(-100%);
+}
+#roundtrip:checked~div #redatediv{
+  display: block;
 }
 
-@keyframes flow {
-  from {
-    transform: translateY(15vh);
-  }
 
-  to {
-    transform: translateY(0);
-  }
+/* class type animation */
+#econ_btn:checked~.class_type_label label[for="econ_btn"]{
+  color: white;
+}
+#buss_btn:checked~.class_type_label label[for="buss_btn"]{
+  color: white;
+}
+#fclass_btn:checked~.class_type_label label[for="fclass_btn"]{
+  color: white;
+}
+#econ_btn:checked~.class_type_label div{
+  width: 93px;
+  left: 0;
+}
+#buss_btn:checked~.class_type_label div{
+  width: 95px;
+  left: calc(93px + 37.5px);
+}
+#fclass_btn:checked~.class_type_label div{
+  width: 57px;
+  left: 100%;
+  transform: translateX(-100%);
+}
+
+
+
+/* js inserted form autocomplete DOMs  */
+.autocomplete-items {
+  border: 1px solid #333;
+  border-bottom: none;
+  border-top: none;
+}
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 1px solid #d4d4d4;
+}
+.autocomplete-items div:hover {
+  background-color: #e9e9e9;
+}
+.autocomplete-active {
+  background-color: DodgerBlue !important;
+  color: #ffffff;
+}
+
+
+/* search flight nav */
+#flight_form:checked ~ div{
+  transform: translateX(0);
+}
+#flight_info:checked ~ div{
+  transform: translateX(-25%);
+  -webkit-transform: translateX(-25%);
+  -moz-transform: translateX(-25%);
+  -ms-transform: translateX(-25%);
+  -o-transform: translateX(-25%);
+}
+#pay_info:checked ~ div{
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+}
+#confirm_booking:checked ~ div{
+  transform: translateX(-75%);
+  -webkit-transform: translateX(-75%);
+  -moz-transform: translateX(-75%);
+  -ms-transform: translateX(-75%);
+  -o-transform: translateX(-75%);
 }

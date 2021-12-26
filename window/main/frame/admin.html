@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full bg-gray-100">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -10,16 +10,14 @@
   <link rel="stylesheet" href="../style/tailwind_out.css">
 </head>
 
-<body class="w-screen">
-
-
+<body class="w-screen h-screen bg-gray-200">
 
 
 
 
   <div class="min-h-full">
-    <input type="radio" name="menu-control" id="dashboard" class="hidden" checked>
-    <input type="radio" name="menu-control" id="team" class="hidden">
+    <input type="radio" name="menu-control" id="dashboard" class="hidden">
+    <input type="radio" name="menu-control" id="flights" class="hidden" checked>
     <input type="radio" name="menu-control" id="projects" class="hidden">
     <input type="radio" name="menu-control" id="calendar" class="hidden">
     <input type="radio" name="menu-control" id="reports" class="hidden">
@@ -30,16 +28,18 @@
         <div class="flex items-center justify-between h-16">
           <div class="flex items-center">
             <div class="flex-shrink-0">
+              <!-- TODO: add brand logo -->
               <img class="h-8 w-8" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow">
             </div>
+            <!-- main nav menu -->
             <div class="hidden md:block">
               <div id="nav_div" class="ml-10 flex items-baseline space-x-4">
                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                 <label for="dashboard"
                   class="text-gray-300 hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Dashboard</label>
 
-                <label for="team"
-                  class="text-gray-300 hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Team</label>
+                <label for="flights"
+                  class="text-gray-300 hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Flights</label>
 
                 <label for="projects"
                   class="text-gray-300 hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Projects</label>
@@ -75,8 +75,9 @@
                     From: "transform opacity-100 scale-100"
                     To: "transform opacity-0 scale-95"
                 -->
+                <!-- profile pop-up -->
                 <div
-                  class="hidden peer-checked:block transition ease-out duration-100 transform opacity-0 scale-95 peer-checked:opacity-100 peer-checked:scale-100 origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+                  class="transition ease-out duration-100 transform opacity-0 scale-0 peer-checked:opacity-100 peer-checked:scale-100 origin-top-right absolute right-0 z-50 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
                   role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                   <!-- Active: "bg-gray-100", Not Active: "" -->
                   <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
@@ -91,6 +92,7 @@
               </div>
             </div>
           </div>
+          <!-- mobile menu icon -->
           <div class="-mr-2 flex md:hidden">
             <!-- Mobile menu button -->
             <label for="mb-menu"
@@ -119,20 +121,20 @@
       <div class="md:hidden hidden peer-checked:block">
         <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
           <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-          <a href="#" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
-            aria-current="page">Dashboard</a>
-
-          <a href="#"
-            class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Team</a>
-
-          <a href="#"
-            class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Projects</a>
-
-          <a href="#"
-            class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Calendar</a>
-
-          <a href="#"
-            class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Reports</a>
+          <label for="dashboard"
+            class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Dashboard</label>
+        
+          <label for="flights"
+            class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Flights</label>
+        
+          <label for="projects"
+            class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Projects</label>
+        
+          <label for="calendar"
+            class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Calendar</label>
+        
+          <label for="reports"
+            class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Reports</label>
         </div>
         <div class="pt-4 pb-3 border-t border-gray-700">
           <div class="flex items-center px-5">
@@ -172,32 +174,18 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <div>
 
       <main class="flow w-screen hidden" id="dashboard_card">
-        <div class="py-6 sm:px-6 lg:px-8">
+        <div class="py-3 sm:px-4 lg:px-6">
           <div class="border-2 border-dashed border-gray-400 rounded-lg h-96 flex items-center justify-center">
+            <div>
+            </div>
             <svg class="bar-chart w-64 h-44" viewBox="0 0 735 525" width="735" height="525">
               <line x1="0" y1="0" x2="0" y2="500" stroke="black" stroke-width="5"></line>
               <line x1="0" y1="500" x2="735" y2="500" stroke="black" stroke-width="5"></line>
-
-
+              
+              
               <rect x="5" y="400" height="100" width="100" fill="#3e4d74" fill-opacity="0.7">
                 <title>100</title>
               </rect>
@@ -219,10 +207,10 @@
               <rect x="635" y="50" height="450" width="100" fill="#3e4d74" fill-opacity="0.7">
                 <title>450</title>
               </rect>
-
+              
               <path d="M 55 400 L 160 450 L 265 200 L 370 460 L 475 350 L 580 250 L 685 50" stroke="red"
-                stroke-width="3" fill="none" stroke-linejoin="round"></path>
-
+              stroke-width="3" fill="none" stroke-linejoin="round"></path>
+              
               <g stroke="red" stroke-width="5" fill="red">
                 <circle cx="55" cy="400" r="3" />
                 <circle cx="160" cy="450" r="3" />
@@ -232,56 +220,206 @@
                 <circle cx="580" cy="250" r="3" />
                 <circle cx="685" cy="50" r="3" />
               </g>
-
+              
               <g font-size="25" font-family="sans-serif" font-weight="bolder" fill="black" stroke="none"
-                text-anchor="middle">
-                <text x="55" y="525" dx="0">SUN</text>
-                <text x="160" y="525" dx="0">MON</text>
-                <text x="265" y="525" dx="0">TUE</text>
-                <text x="370" y="525" dx="0">WED</text>
-                <text x="475" y="525" dx="0">THU</text>
-                <text x="580" y="525" dx="0">FRI</text>
-                <text x="685" y="525" dx="0">SAT</text>
-              </g>
-              <!--100,50,300,40,150,250,450
-                    var largest = Math.max.apply(0, data); -->
+              text-anchor="middle">
+              <text x="55" y="525" dx="0">SUN</text>
+              <text x="160" y="525" dx="0">MON</text>
+              <text x="265" y="525" dx="0">TUE</text>
+              <text x="370" y="525" dx="0">WED</text>
+              <text x="475" y="525" dx="0">THU</text>
+              <text x="580" y="525" dx="0">FRI</text>
+              <text x="685" y="525" dx="0">SAT</text>
+            </g>
+            <!--100,50,300,40,150,250,450
+              var largest = Math.max.apply(0, data); -->
             </svg>
           </div>
         </div>
       </main>
     </div>
+    
+    
+
+
+
+
+
+
+
+
 
 
 
     <div>
+      <main class="flow w-screen hidden" id="flights_card">
+        <div class="py-3 sm:px-4 lg:px-6">
+          <div class="border-2 border-dashed border-gray-400 rounded-lg h-full overflow-x-auto">
 
-      <main class="flow w-screen hidden" id="team_card">
-        <div class="py-6 sm:px-6 lg:px-8">
-          <div class="border-2 border-dashed border-gray-400 rounded-lg h-96">
-            <input type="text" name="" id="food">
-            <button onclick="document.getElementById('projects').checked = true">next</button>
+            <input type="radio" class="hidden" name="booking_nav" id="flight_form" checked>
+            <input type="radio" class="hidden" name="booking_nav" id="flight_info">
+            <input type="radio" class="hidden" name="booking_nav" id="pay_info">
+            <input type="radio" class="hidden" name="booking_nav" id="confirm_booking">
+            <div class="w-[400%] flex gap-5 transition-transform">
+    
+    
+    
+              <div class="w-1/4 relative px-4 py-3">
+                <h1 class="text-5xl mb-3 mx-auto text-center text-slate-800">Search for Flights</h1>
+                <form autocomplete="off">
+                  <input type="radio" name="trip_type" id="oneway" class="hidden" checked>
+                  <input type="radio" name="trip_type" id="roundtrip" class="hidden">
+                  <div class="trip_type_label relative w-48 h-8 mb-3 overflow-x-hidden flex flex-wrap justify-between">
+                    <label for="oneway" class="px-1 font-semibold border border-gray-800 rounded-md">One Way</label>
+                    <label for="roundtrip" class="px-1 font-semibold border border-gray-800 rounded-md">Round Trip</label>
+                    <div class="absolute -z-10 w-10/12 h-full bg-slate-900 rounded-md transition-all duration-300"></div>
+                  </div>
+    
+                  <h1 class="mt-2 mb-1 text-xl text-slate-800">Class</h1>
+                  <input type="radio" name="seat_type" id="econ_btn" class="hidden" checked>
+                  <input type="radio" name="seat_type" id="buss_btn" class="hidden">
+                  <input type="radio" name="seat_type" id="fclass_btn" class="hidden">
+                  <div class="class_type_label relative w-80 h-8 mb-3 overflow-x-hidden flex flex-wrap justify-between">
+                    <label for="econ_btn" class="px-3 font-semibold border border-gray-800 rounded-md">Economy</label>
+                    <label for="buss_btn" class="px-3 font-semibold border border-gray-800 rounded-md">Bussiness</label>
+                    <label for="fclass_btn" class="px-3 font-semibold border border-gray-800 rounded-md">First</label>
+                    <div class="absolute -z-10 w-10/12 h-full bg-slate-900 rounded-md transition-all"></div>
+                  </div>
+    
+                  <div class="mt-2 sm:flex sm:justify-between transition-all">
+                    <div class="relative w-48 h-64 overflow-y-auto">
+                      <div class="sticky top-0 w-full bg-gray-200">
+                        <label for="departure" class="text-xl text-slate-800">Departure</label>
+                        <input id="departure" type="text" placeholder="City or Airport"
+                          class="border border-slate-600 border-solid bg-slate-200 focus:bg-slate-300 p-1.5 w-full rounded-md">
+                      </div>
+                    </div>
+                    <div class="relative w-48 h-64 overflow-y-auto">
+                      <div class="sticky top-0 w-full bg-gray-200">
+                        <label for="destination" class="text-xl text-slate-800">Destination</label>
+                        <input id="destination" type="text" placeholder="City or Airport"
+                          class="border border-slate-600 border-solid bg-slate-200 focus:bg-slate-300 p-1.5 w-full rounded-md">
+                      </div>
+                    </div>
+                    <div class="relative w-48 h-64 overflow-y-auto">
+                      <div class="sticky top-0 w-full bg-gray-200">
+                        <label for="depart_date" class="text-xl text-slate-800">Departing Date</label>
+                        <input id="depart_date" type="date"
+                          class="border border-slate-600 border-solid bg-slate-200 focus:bg-slate-300 p-1.5 w-full rounded-md">
+                      </div>
+                    </div>
+                    <div class="relative w-48 h-64 overflow-y-auto hidden" id="redatediv">
+                      <div class="sticky top-0 w-full bg-gray-200">
+                        <label for="return_date" class="text-xl text-slate-800">Returning Date</label>
+                        <input id="return_date" type="date"
+                          class="border border-slate-600 border-solid bg-slate-200 focus:bg-slate-300 p-1.5 w-full rounded-md">
+                      </div>
+                    </div>
+                  </div>
+    
+                  <label for="flight_info" class="absolute bottom-2 right-4 py-4 px-8 bg-cyan-700 text-white text-xl rounded">
+                    Next
+                  </label>
+                </form>
+              </div>
+    
+
+
+
+
+              <div class="w-1/4 relative px-4 py-3">
+                <div class="grid grid-cols-3">
+                  <div>
+                    
+                  </div>
+
+
+                  <label for="flight_form" class="absolute bottom-2 left-4 py-4 px-8 bg-cyan-700 text-white text-xl rounded">
+                    Previous
+                  </label>
+                  <label for="pay_info" class="absolute bottom-2 right-4 py-4 px-8 bg-cyan-700 text-white text-xl rounded">
+                    Next
+                  </label>
+
+                </div>
+              </div>
+
+
+
+
+              <div class="w-1/4 relative px-4 py-3">
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt et exercitationem corporis quas asperiores,
+                  voluptates maiores officia deleniti rem ipsa laudantium numquam assumenda earum tempora fuga vero aliquam culpa
+                  quasi?
+
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores odio fuga hic obcaecati aperiam voluptatum soluta! Excepturi perferendis eligendi commodi expedita nihil repellendus ea, fugiat et. Sit laborum aspernatur voluptatum?
+              </div>
+                <label for="flight_info" class="absolute bottom-2 left-4 py-4 px-8 bg-cyan-700 text-white text-xl rounded">
+                  Previous
+                </label>
+                <label for="confirm_booking" class="absolute bottom-2 right-4 py-4 px-8 bg-cyan-700 text-white text-xl rounded">
+                  Next
+                </label>
+              </div>
+
+
+              <div class="w-1/4 relative px-4 py-3">
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt et exercitationem corporis quas asperiores,
+                  voluptates maiores officia deleniti rem ipsa laudantium numquam assumenda earum tempora fuga vero aliquam culpa
+                  quasi?</div>
+              
+              
+                <label for="pay_info" class="absolute bottom-2 left-4 py-4 px-8 bg-cyan-700 text-white text-xl rounded">
+                  Previous
+                </label>
+                <button type="button" class="absolute bottom-2 right-4 py-4 px-8 bg-cyan-700 text-white text-xl rounded">
+                  Confirm
+                </button>
+              </div>
+
+    
+            </div>
           </div>
         </div>
       </main>
     </div>
 
 
-    <div>
 
+
+
+
+
+
+
+
+
+
+
+    <div>
+    
       <main class="flow w-screen hidden" id="projects_card">
-        <div class="py-6 sm:px-6 lg:px-8">
+        <div class="py-3 sm:px-4 lg:px-6">
           <div class="border-2 border-dashed border-gray-400 rounded-lg h-96">
-            Projects
+            projects
           </div>
         </div>
       </main>
     </div>
+
+
+
+
+
+
+
+
 
 
     <div>
 
       <main class="flow w-screen hidden" id="calendar_card">
-        <div class="py-6 sm:px-6 lg:px-8">
+        <div class="py-3 sm:px-4 lg:px-6">
           <div class="border-2 border-dashed border-gray-400 rounded-lg h-96">
             Calendar
           </div>
@@ -290,10 +428,19 @@
     </div>
 
 
+
+
+
+
+
+
+
+
+
     <div>
 
       <main class="flow w-screen hidden" id="reports_card">
-        <div class="py-6 sm:px-6 lg:px-8">
+        <div class="py-3 sm:px-4 lg:px-6">
           <div class="border-2 border-dashed border-gray-400 rounded-lg h-96">
             Reports
           </div>
@@ -346,7 +493,7 @@
   </div>
 
 </body>
-<svg>
+<svg class="hidden">
   <defs>
     <filter id="gooeyness">
       <feGaussianBlur in="SourceGraphic" stdDeviation="2.2" result="blur" />
