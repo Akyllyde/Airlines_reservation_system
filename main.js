@@ -70,8 +70,8 @@ const mainMenuTemplate = [
 
 function createWindow () {
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1100,
+    height: 650,
     backgroundColor: '#2b2e3b',
     title: 'Airlines Reservation System',
     webPreferences: {
@@ -225,5 +225,10 @@ function loginPageComms(mainWindow){
       });
     });
   });
+
+  //sign out ipc
+  ipcMain.on("sign-out", (event, data) => {
+    mainWindow.loadFile(`./window/main/frame/login.html`)
+  })
 
 }

@@ -6,11 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="../script/common.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/imask/3.4.0/imask.min.js" defer></script>
+  <link href="https://fonts.googleapis.com/css?family=Raleway|Rock+Salt|Source+Code+Pro:300,400,600" rel="stylesheet">
   <link rel="stylesheet" href="../style/common.css">
   <link rel="stylesheet" href="../style/tailwind_out.css">
 </head>
 
-<body class="w-screen h-screen bg-gray-200">
+<body class="w-screen h-screen bg-gray-200 font-sans">
 
 
 
@@ -80,14 +82,14 @@
                   class="transition ease-out duration-100 transform opacity-0 scale-0 peer-checked:opacity-100 peer-checked:scale-100 origin-top-right absolute right-0 z-50 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
                   role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                   <!-- Active: "bg-gray-100", Not Active: "" -->
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1"
                     id="user-menu-item-0">Your Profile</a>
 
                   <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
                     id="user-menu-item-1">Settings</a>
 
                   <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
-                    id="user-menu-item-2">Sign out</a>
+                    id="user-menu-item-2" onclick="signout()">Sign out</a>
                 </div>
               </div>
             </div>
@@ -157,7 +159,7 @@
               class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700">Settings</a>
 
             <a href="#"
-              class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700">Sign
+              class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700" onclick="signout()">Sign
               out</a>
           </div>
         </div>
@@ -256,11 +258,11 @@
         <div class="py-3 sm:px-4 lg:px-6">
           <div class="border-2 border-dashed border-gray-400 rounded-lg h-full overflow-x-auto">
 
-            <input type="radio" class="hidden" name="booking_nav" id="flight_form" checked>
+            <input type="radio" class="hidden" name="booking_nav" id="flight_form">
             <input type="radio" class="hidden" name="booking_nav" id="flight_info">
-            <input type="radio" class="hidden" name="booking_nav" id="pay_info">
+            <input type="radio" class="hidden" name="booking_nav" id="pay_info" checked>
             <input type="radio" class="hidden" name="booking_nav" id="confirm_booking">
-            <div class="w-[400%] flex gap-5 transition-transform">
+            <div class="w-[400%] flex transition-transform">
     
     
     
@@ -330,37 +332,68 @@
               <div class="w-1/4 relative px-4 py-3">
                 <div class="grid grid-cols-3">
                   <div>
-                    
+
                   </div>
-
-
-                  <label for="flight_form" class="absolute bottom-2 left-4 py-4 px-8 bg-cyan-700 text-white text-xl rounded">
-                    Previous
-                  </label>
-                  <label for="pay_info" class="absolute bottom-2 right-4 py-4 px-8 bg-cyan-700 text-white text-xl rounded">
-                    Next
-                  </label>
-
+              
                 </div>
+              
+                <label for="flight_form" class="absolute bottom-2 left-4 py-4 px-8 bg-cyan-700 text-white text-xl rounded">
+                  Previous
+                </label>
+                <label for="pay_info" class="absolute bottom-2 right-4 py-4 px-8 bg-cyan-700 text-white text-xl rounded">
+                  Next
+                </label>
+              
               </div>
 
 
 
 
               <div class="w-1/4 relative px-4 py-3">
-                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt et exercitationem corporis quas asperiores,
-                  voluptates maiores officia deleniti rem ipsa laudantium numquam assumenda earum tempora fuga vero aliquam culpa
-                  quasi?
+                <form class="flex justify-around" autocomplete="on">
 
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores odio fuga hic obcaecati aperiam voluptatum soluta! Excepturi perferendis eligendi commodi expedita nihil repellendus ea, fugiat et. Sit laborum aspernatur voluptatum?
+                  <div class="w-1/3 bg-white pt-4 pb-6 px-10 border border-gray-400 rounded">
+                    <h1 class="mb-2 font-bold text-xl text-gray-800">Passenger Information</h1>
+                    <label for="uname" class="block mt-2 font-medium text-gray-600">Name</label>
+                    <input type="text" name="name" id="uname" class="w-full border-2 border-gray-400 rounded" required>
+                    <label for="umail" class="block mt-2 font-medium text-gray-600">Email</label>
+                    <input type="email" name="email" id="umail" class="w-full border-2 border-gray-400 rounded" required>
+                    <label for="uphone" class="block mt-2 font-medium text-gray-600">Phone</label>
+                    <input type="tel" pattern="01[3,5,6,7,8,9][0-9]{8}" name="phone" id="uphone" class="w-full border-2 border-gray-400 rounded" required>
+                    <label for="uaddress" class="block mt-2 font-medium text-gray-600">Address</label>
+                    <input type="text" name="address" id="uaddress" class="w-full border-2 border-gray-400 rounded" required>
+
+                  </div>
+                  <div class="w-1/3 bg-white pt-4 pb-6 px-10 border border-gray-400 rounded">
+                    <h1 class="mb-2 font-bold text-xl text-gray-800">Payment Information</h1>
+                    <label class="block mt-2 font-medium text-gray-600">Card Details</label>
+                    
+                    <input id="cardnumber" type="text" pattern="[0-9]*" inputmode="numeric" class="w-full border-gray-400 rounded m-0 px-2 py-1" placeholder="Card number" required>
+                    <input id="expirationdate" type="text" pattern="[0-9]*" inputmode="numeric" class="w-3/4 border-gray-400 rounded m-0 px-2 py-1" placeholder="MM/YY" required>
+                    <input id="securitycode" type="text" pattern="[0-9]*" inputmode="numeric" class="w-1/5 border-gray-400 rounded m-0 px-2 py-1" placeholder="CVC" required>
+
+                    <label class="block mt-2 font-medium text-gray-600">Billing Address</label>
+
+                    <input type="text" id="billing_address" class="w-full border-2 border-gray-400 rounded" required>
+                    <input type="text" id="zipcode" class="w-full border-2 border-gray-400 rounded" required>
+
+                  </div>
+                
+                  <label for="flight_info" class="absolute bottom-2 left-4 py-4 px-8 bg-cyan-700 text-white text-xl rounded">
+                    Previous
+                  </label>
+                  <label for="confirm_booking" class="absolute bottom-2 right-4 py-4 px-8 bg-cyan-700 text-white text-xl rounded">
+                    Next
+                  </label>
+                </form>
               </div>
-                <label for="flight_info" class="absolute bottom-2 left-4 py-4 px-8 bg-cyan-700 text-white text-xl rounded">
-                  Previous
-                </label>
-                <label for="confirm_booking" class="absolute bottom-2 right-4 py-4 px-8 bg-cyan-700 text-white text-xl rounded">
-                  Next
-                </label>
-              </div>
+
+
+
+
+
+
+
 
 
               <div class="w-1/4 relative px-4 py-3">
