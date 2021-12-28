@@ -244,5 +244,35 @@ function loginPageComms(mainWindow){
       });
     });
   });
+  
 
+
+
+
+  //save flight info in order
+  ipcMain.on("add-flight-order-msg", (event, data) => {
+    let sql = `INSERT INTO orders(fromCity,toCity,goTime,arrTime,goDate,flight_number,aircraft) VALUES('${data.f}','${data.t}','${data.gt}','${data.at}','${data.gd}','${data.fn}','${data.ac}');`;
+    connection.connect((err) => {
+      connection.query(sql, (err, result) => {
+        rower(data.f,data.t,data.gd,data,fn,data.ac)
+      });
+    });
+  });
+
+
+
+
+  //save user info in order
+  function rower(a,b,c,d,e){
+
+  
+  ipcMain.on("add-user-order-msg", (event, data) => {
+    let sql = `INSERT INTO orders(uname,uemail,uphone,uaddress,uzip) VALUES('${data.un}','${data.tum}','${data.up}','${data.uad}','${data.uz}') WHERE fromCity='${a}' AND toCity='${b}' AND goDate='${c}' AND flight_number='${d}' AND aircraft='${e}';`;
+    connection.connect((err) => {
+      connection.query(sql, (err, result) => {
+
+      });
+    });
+  });
+}
 }

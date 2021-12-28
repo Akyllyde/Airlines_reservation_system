@@ -19,8 +19,8 @@
 
 
   <div class="min-h-full">
-    <input type="radio" name="menu-control" id="dashboard" class="hidden">
-    <input type="radio" name="menu-control" id="flights" class="hidden" checked>
+    <input type="radio" name="menu-control" id="dashboard" class="hidden" checked>
+    <input type="radio" name="menu-control" id="flights" class="hidden" >
     <input type="radio" name="menu-control" id="projects" class="hidden">
     <input type="radio" name="menu-control" id="calendar" class="hidden">
     <input type="radio" name="menu-control" id="reports" class="hidden">
@@ -45,13 +45,13 @@
                   class="text-gray-300 hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Flights</label>
 
                 <label for="projects"
-                  class="text-gray-300 hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Projects</label>
+                  class="text-gray-300 hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Fleet</label>
 
                 <label for="calendar"
-                  class="text-gray-300 hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Calendar</label>
+                  class="text-gray-300 hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Users</label>
 
                 <label for="reports"
-                  class="text-gray-300 hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Reports</label>
+                  class="text-gray-300 hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Orders</label>
               </div>
             </div>
           </div>
@@ -131,13 +131,13 @@
             class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Flights</label>
         
           <label for="projects"
-            class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Projects</label>
+            class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Fleet</label>
         
           <label for="calendar"
-            class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Calendar</label>
+            class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Users</label>
         
           <label for="reports"
-            class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Reports</label>
+            class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Orders</label>
         </div>
         <div class="pt-4 pb-3 border-t border-gray-700">
           <div class="flex items-center px-5">
@@ -376,7 +376,7 @@
                       
                     </div>
 
-                    <button class="absolute right-0 bottom-0 bg-red-500 p-2 rounded-tl-md font-bold text-white tracking-wide">4554.14 TK</button>
+                    <button class="absolute right-0 bottom-0 bg-red-500 p-2 rounded-tl-md font-bold text-white tracking-wide" onclick="addPayInfo()">4554.14 TK</button>
                   </div>
                   
                     
@@ -426,8 +426,8 @@
                   <label for="flight_info" class="absolute bottom-2 left-4 py-2 px-4 bg-cyan-700 text-white text-xl rounded">
                     Previous
                   </label>
-                  <label for="confirm_booking" class="absolute bottom-2 right-4 py-2 px-4 bg-cyan-700 text-white text-xl rounded">
-                    Next
+                  <label for="confirm_booking" class="absolute bottom-2 right-4 py-2 px-4 bg-cyan-700 text-white text-xl rounded" onclick="conModal()">
+                    Confirm
                   </label>
                 </form>
               </div>
@@ -435,13 +435,14 @@
 
               <!-- booking confirmation -->
               <div class="w-1/4 relative px-4 py-3">
-                
+                <div id="con_div">
+                  <p class="block p-5 mt-5 border-emerald-300 border bg-green-800 text-white text-lg rounded-md">
+                    Booking Succesfull
+                  </p>
+                </div>
                 <label for="pay_info" class="absolute bottom-2 left-4 py-2 px-4 bg-cyan-700 text-white text-xl rounded">
                   Previous
                 </label>
-                <button type="button" class="absolute bottom-2 right-4 py-2 px-4 bg-cyan-700 text-white text-xl rounded">
-                  Confirm
-                </button>
               </div>
 
     
@@ -468,7 +469,7 @@
       <main class="flow w-screen hidden" id="projects_card">
         <div class="py-3 sm:px-4 lg:px-6">
           <div class="border-2 border-dashed border-gray-400 rounded-lg h-96">
-            projects
+            Fleet management
           </div>
         </div>
       </main>
@@ -488,7 +489,7 @@
       <main class="flow w-screen hidden" id="calendar_card">
         <div class="py-3 sm:px-4 lg:px-6">
           <div class="border-2 border-dashed border-gray-400 rounded-lg h-96">
-            Calendar
+            User management
           </div>
         </div>
       </main>
@@ -509,7 +510,7 @@
       <main class="flow w-screen hidden" id="reports_card">
         <div class="py-3 sm:px-4 lg:px-6">
           <div class="border-2 border-dashed border-gray-400 rounded-lg h-96">
-            Reports
+            Order management
           </div>
         </div>
       </main>

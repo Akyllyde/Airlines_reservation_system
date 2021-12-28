@@ -522,7 +522,7 @@ function searchFlight(){
                       
                     </div>
 
-                    <button class="absolute right-0 bottom-0 bg-red-500 p-2 rounded-tl-md font-bold text-white tracking-wide" onclick="addPayInfo()">4554.14 TK</button>
+                    <button class="absolute right-0 bottom-0 bg-red-500 p-2 rounded-tl-md font-bold text-white tracking-wide" onclick="addPayInfo(${departure.slice(-3)}, ${destination.slice(-3)}, ${obj.departure}, ${obj.arrival}, ${departDate}, ${obj.flight_number}, ${obj.aircraft})">4554.14 TK</button>
                   </div>
               `)
             })
@@ -584,10 +584,34 @@ function searchFlight(){
 
 
 
-function addPayInfo(){
+function addPayInfo(from,to,gotime,atime,godate,fnum,airc){
   document.getElementById('pay_info').checked = true
-
+  ipcRenderer.send("add-flight-order-msg", { f: from, t: to, gt: gotime, at: atime, gd: godate, fn: fnum, ac: airc });
+ 
 }
+
+function conModal(){
+  let uname = document.getElementById('uname').value
+  let umail = document.getElementById('umail').value
+  let uphone = document.getElementById('uphone').value
+  let uaddress = document.getElementById('uaddress').value
+  let cardnumber = document.getElementById('cardnumber').value
+  let expirationdate = document.getElementById('expirationdate').value
+  let securitycode = document.getElementById('securitycode').value
+  let zipcode = document.getElementById('zipcode').value
+
+  ipcRenderer.send("add-user-order-msg", { un: uname, um: umail, up: uphone, uad: uaddress, uz: zipcode });
+
+  setTimeout(() => {
+    document.getElementById("flight_form").checked = true
+  }, 8000);
+}
+function showCon(){
+  document.getElementById('con_div').innerHTML = ``
+  
+}
+
+
   
 
 
