@@ -3,7 +3,7 @@
 }
 
 input:focus{
-  border: 2px solid black;
+  border: 1px solid black;
   outline: none;
 }
 
@@ -238,17 +238,13 @@ input::-webkit-inner-spin-button {
   color: white;
 }
 #oneway:checked~.trip_type_label div{
-  width: 76px;
+  width: 78px;
   left: 0;
 }
 #roundtrip:checked~.trip_type_label div{
-  width: 90px;
+  width: 95px;
   left: 100%;
   transform: translateX(-100%);
-  -webkit-transform: translateX(-100%);
-  -moz-transform: translateX(-100%);
-  -ms-transform: translateX(-100%);
-  -o-transform: translateX(-100%);
 }
 #roundtrip:checked~div #redatediv{
   display: block;
@@ -266,17 +262,21 @@ input::-webkit-inner-spin-button {
   color: white;
 }
 #econ_btn:checked~.class_type_label div{
-  width: 93px;
+  width: 98px;
   left: 0;
 }
 #buss_btn:checked~.class_type_label div{
-  width: 95px;
-  left: calc(93px + 37.5px);
+  width: 106px;
+  left: calc(98px + 27.5px);
 }
 #fclass_btn:checked~.class_type_label div{
-  width: 57px;
+  width: 61px;
   left: 100%;
   transform: translateX(-100%);
+}
+
+.trip_type_label div,.class_type_label div{
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 
@@ -308,22 +308,10 @@ input::-webkit-inner-spin-button {
 }
 #flight_info:checked ~ div{
   transform: translateX(-25%);
-  -webkit-transform: translateX(-25%);
-  -moz-transform: translateX(-25%);
-  -ms-transform: translateX(-25%);
-  -o-transform: translateX(-25%);
 }
 #pay_info:checked ~ div{
   transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  -o-transform: translateX(-50%);
 }
 #confirm_booking:checked ~ div{
   transform: translateX(-75%);
-  -webkit-transform: translateX(-75%);
-  -moz-transform: translateX(-75%);
-  -ms-transform: translateX(-75%);
-  -o-transform: translateX(-75%);
 }

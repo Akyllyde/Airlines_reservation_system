@@ -12,7 +12,7 @@ const connection = mysql.createConnection({
 
 const mainMenuTemplate = [
   {
-    label:'&BDAir',
+    label:'&Biman',
     submenu:[
       {
         role: 'Reload'
@@ -144,8 +144,8 @@ let About;
 
 function addAboutWindow () {
   About = new BrowserWindow({
-    width: 450,
-    height: 550,
+    width: 700,
+    height: 500,
     backgroundColor: '#2b2e3b',
     titleBarStyle: 'hidden',
     titleBarOverlay:{
@@ -230,5 +230,19 @@ function loginPageComms(mainWindow){
   ipcMain.on("sign-out", (event, data) => {
     mainWindow.loadFile(`./window/main/frame/login.html`)
   })
+
+
+  //search flights
+  ipcMain.on("search-dom-flight-msg", (event, data) => {
+    let sql = `SELECT flight_number, departure, arrival, aircraft FROM domestic_flight_schedule WHERE fromCity='${data.dc}' AND toCity='${data.rc}' AND (days='EVERYDAY' OR days LIKE '%${data.d1}%');`;
+    connection.connect((err) => {
+      if (err) event.reply("search-dom-flight-reply", err.sqlMessage);
+      connection.query(sql, (err, result) => {
+        if (err) event.reply("search-dom-flight-reply", err.sqlMessage);
+        console.log(result)
+        event.reply("search-dom-flight-reply", result);
+      });
+    });
+  });
 
 }

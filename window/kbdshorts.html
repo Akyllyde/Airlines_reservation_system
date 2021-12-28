@@ -4,7 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    .drag{
+    *::-webkit-scrollbar {
+      display: none;
+    }
+
+    *{
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+  
+    .drag {
       background: transparent;
       width: 100vw;
       height: 35px;
@@ -12,14 +22,125 @@
       top: 0;
       left: 0;
       right: 0;
+      z-index: 10;
       -webkit-app-region: drag;
       user-select: none;
       -webkit-user-select: none;
     }
+  
+    .container {
+      background-color: #111;
+      width: 100vw;
+      height: 100vh;
+      border: 10px solid #5a5f73;
+      display: flex;
+      justify-content: space-evenly;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    section{
+      margin: 50px 0;
+    }
+
+    section div{
+      margin: 10px 0;
+    }
+
+    section div kbd{
+      background-color: #c7c9d3;
+      padding: 2px 4px;
+      font-family: 'Courier New', Courier, monospace;
+      border-radius: 5px;
+    }
+
+    section div span{
+      color: #c7c9d3;
+      padding: 2px 4px;
+    }
+  
+    
   </style>
 </head>
 <body>
   <div class="drag"></div>
+
+
+
+  <div class="container">
+
+    <section>
+      <div>
+        <kbd>Alt</kbd>
+        <kbd>B</kbd>
+      </div>
+      <div>
+        <kbd>Alt</kbd>
+        <kbd>H</kbd>
+      </div>
+      <div>
+        <kbd>Ctrl</kbd>
+        <kbd>R</kbd>
+      </div>
+      <div>
+        <kbd>Ctrl</kbd>
+        <kbd>Shift</kbd>
+        <kbd>R</kbd>
+      </div>
+      <div>
+        <kbd>F11</kbd>
+      </div>
+      <div>
+        <kbd>Ctrl</kbd>
+        <kbd>Q</kbd>
+      </div>
+      <div>
+        <kbd>Ctrl</kbd>
+        <kbd>K</kbd>
+      </div>
+      <div>
+        <kbd>Ctrl</kbd>
+        <kbd>D</kbd>
+      </div>
+      <div>
+        <kbd>Ctrl</kbd>
+        <kbd>A</kbd>
+      </div>
+    </section>
+    
+    
+    <section>
+      <div>
+        <span>Open Biman Menu</span>
+      </div>
+      <div>
+        <span>Open Help Menu</span>
+      </div>
+      <div>
+        <span>Reload App</span>
+      </div>
+      <div>
+        <span>Force Reload App</span>
+      </div>
+      <div>
+        <span>Toggle Fullscreen Mode</span>
+      </div>
+      <div>
+        <span>Quit App</span>
+      </div>
+      <div>
+        <span>Open Keyboard Shortcuts Reference</span>
+      </div>
+      <div>
+        <span>Open Documentation Window</span>
+      </div>
+      <div>
+        <span>Open About Window</span>
+      </div>
+    </section>
+
+    
+   
+  </div>
   
 </body>
 </html>

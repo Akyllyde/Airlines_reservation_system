@@ -5,6 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style type="text/css" media="all">
+    *::-webkit-scrollbar {
+      display: none;
+    }
+    
     .drag{
       background: transparent;
       width: 100vw;
@@ -47,16 +51,16 @@
     }
 
     p {
-      padding: 10% 0;
+      padding: 5% 0;
     }
 
     label>p {
       font-weight: 600;
-      font-size: 1.1em;
       text-transform: uppercase;
       position: relative;
       padding-right: 20%;
       border-top: 2px solid darkgray;
+      user-select: none;
     }
 
     label:nth-of-type(1)>p {
@@ -113,17 +117,14 @@
 
     .dropdown p {
       border-top: 2px solid lightgray;
-      padding-right: 30%;
-      position: relative;
-      font-size: 0.9em;
-      color: #5280ED;
+      padding-right: 10%;
     }
 
-    .dropdown p span {
-      position: absolute;
-      right: 0;
-      top: 50%;
-      transform: translateY(-50%);
+    .dropdown p kbd{
+      background-color: gray;
+      border-radius: 2px;
+      padding: 2px 4px;
+      font-weight: 600;
     }
   </style>
 </head>
@@ -132,30 +133,108 @@
   <div class="drag"></div>
   <div class="menu">
     <div class="card">
-      <input type="radio" name="fall" id="tech" />
-      <label for="tech">
-        <p>Technical Issues<span></span></p>
+
+
+      <input type="radio" name="fall" id="login" />
+      <label for="login">
+        <p>Sign-in & sign-up<span></span></p>
       </label>
       <div class="dropdown">
-        <p>How to start a new game<span>&#10095;</span></p>
-        <p>Sending bug report<span>&#10095;</span></p>
+        <p>
+          After installation, the user is prompted with a Sign-in / Sign-up modal. The sign-up tab can be used to create new user accounts. The Sign-in tab is used for logging in to the system by the Admin, Super User and User.
+        </p>
       </div>
-      <input type="radio" name="fall" id="supp" />
-      <label for="supp">
-        <p>Support<span></span></p>
+
+
+      <input type="radio" name="fall" id="booking" />
+      <label for="booking">
+        <p>Booking a Ticket<span></span></p>
       </label>
       <div class="dropdown">
-        <p>Air support<span>&#10095;</span></p>
-        <p>Naval support<span>&#10095;</span></p>
+        <p>
+          Booking a ticket has four steps in this system. Entering the parameters in the search form, then choosing one of the avilable tickets and providing credentials for payment and confirming the booking.
+        </p>
       </div>
+
+
+
+      <input type="radio" name="fall" id="aircraft" />
+      <label for="aircraft">
+        <p>Managing the fleet<span></span></p>
+      </label>
+      <div class="dropdown">
+        <p>
+          Ony the Admin can manage the fleet and its information, including adding, removing, editing aircraft information. The Fleet tab is used for fleet mangement.
+        </p>
+      </div>
+
+
+      <input type="radio" name="fall" id="user" />
+      <label for="user">
+        <p>user management<span></span></p>
+      </label>
+      <div class="dropdown">
+        <p>
+          The Admin and Super User have the permission to suspend, ban or delete user. But only the Admin has the authority to create new system user with role of Admin and Super User.
+        </p>
+      </div>
+
+
+
+      <input type="radio" name="fall" id="ADash" />
+      <label for="ADash">
+        <p>dashboard<span></span></p>
+      </label>
+      <div class="dropdown">
+        <p>
+          The Admin and Super User, They all have an unique dashboard. Admins dashboard shows revenue, orders, fleet info and so on. Whereas, the Super User's dashboard shows fleet info, user info, booking state and such.
+        </p>
+      </div>
+
+
+
+      <input type="radio" name="fall" id="order" />
+      <label for="order">
+        <p>Booking management<span></span></p>
+      </label>
+      <div class="dropdown">
+        <p>
+          The Admin and Super User can add, remove or modify booking data through the orders tab.
+        </p>
+      </div>
+      
+
+
+      <input type="radio" name="fall" id="shorts" />
+      <label for="shorts">
+        <p>Keyboard shortcuts<span></span></p>
+      </label>
+      <div class="dropdown">
+        <p>
+          The software has plenty of Keyboard shortcuts avilable for ease of use. The shortcuts reference can be found in the 'Help' menu or by pressing <kbd>Ctrl</kbd> <kbd>K</kbd>
+        </p>
+      </div>
+
+
       <input type="radio" name="fall" id="feed" />
       <label for="feed">
         <p>Feedback<span></span></p>
       </label>
       <div class="dropdown">
-        <p>Issues and bugs<span>&#10095;</span></p>
-        <p>Feature request and suggestions<span>&#10095;</span></p>
+        <p>
+          Feedback and suggestions or bug reporting is done through the about section of help menu.
+        </p>
       </div>
+
+
+
+
+
+
+
+
+
+
     </div>
   </div>
   <script type="text/javascript" charset="utf-8">

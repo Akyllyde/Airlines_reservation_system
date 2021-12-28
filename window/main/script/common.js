@@ -133,7 +133,7 @@ var ports = [
 "Lugano LUG", "Stockholm, Arlanda ARN", "Chichenitza CZA", "Lulea LLA", "Stockholm, Bromma BMA",
 "Chiclayo CIX", "Lumid Pau LUB", "Stockton SCK", "Chico CIC", "Lusaka LUN", "Stony River SRV",
 "Chignik KCL", "Luxembourg LUX", "Strasbourg SXB", "Chihuahua CUU", "Luxor LXR", "Stuttgart STR",
-"Chisholm HIB", "Lyon LYS", "Sudbury YSB", "Chittagong CGP", "Cox's Bazar CXB", "Maastricht MST",
+"Chisholm HIB", "Lyon LYS", "Sudbury YSB", "Chattogram CGP", "Cox''s Bazar CXB", "Maastricht MST",
 "Sukhumi SUI", "Chongqing CKG", "Macon MCN", "Sundsvall SDL", "Christchurch CHC", "Madison MSN",
 "Surabaya SUB", "Chuathbaluk CHU", "Madras MAA", "Suva SUV", "Cincinnati CVG", "Madrid MAD",
 "Sverdlovsk, Ekaterinburg SVX", "Ciudad Del Carmen CME", "Magadan GDX", "Sydney SYD",
@@ -213,7 +213,7 @@ var ports = [
 "Nuevo Laredo NLD", "Zaragoza ZAZ", "Garoua GOU", "Nulato NUL", "Zhanjiang ZHA", "Gassim ELQ",
 "Nunapitchuk NUP", "Zhengzhou CGO", "Gauhati GAU", "Nuremberg NUE", "Zihuatanejo ZIH", "Gemena GMA",
 "Oakland OAK", "Zurich ZRH", "Geneva GVA", "Oaxaca OAX", "Genoa GOA", "Oita OIT",
-"Longview GGG", "Okayama OKJ", "Barisal BZL", "Jessore JSR", "Rajshahi RJH", "Saidpur SPD", "Sylhet ZYL" ]
+"Longview GGG", "Okayama OKJ", "Barishal BZL", "Jashore JSR", "Rajshahi RJH", "Saidpur SPD", "Sylhet ZYL" ]
   
 function autocomplete(inp, arr) {
   let currentFocus;
@@ -288,6 +288,20 @@ document.addEventListener("click", function (e) {
 
 autocomplete(document.getElementById("departure"), ports);
 autocomplete(document.getElementById("destination"), ports);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -437,16 +451,144 @@ window.onload = function () {
 const { ipcRenderer } = require("electron");
 
 /* send info to ipcMain and inject html flight data card */
+function searchFlight(){
+
+  
+  let tripType = document.getElementById('oneway').checked ? 'oneway' : 'roundtrip'
+  let classType = document.getElementById('econ_btn').checked ? 'economy' : ( document.getElementById('buss_btn').checked ? 'bussiness' : 'first' )
+  let departure = document.getElementById('departure').value
+  let destination = document.getElementById('destination').value
+  let departDate = document.getElementById('depart_date').value
+  let returnDate = document.getElementById('return_date').value
+  let departCity = departure.slice(0,-4).toUpperCase()
+  let destCity = destination.slice(0,-4).toUpperCase()
+  const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  let d1 = new Date(departDate);
+  let d2 = tripType === 'roundtrip' ? new Date(returnDate) : '';
+  let departDay = weekday[d1.getDay()].slice(0,3).toUpperCase();
+  let returnDay = d2 === '' ? '' : weekday[d2.getDay()].slice(0,3).toUpperCase();
+  const domesticPort = ["Barishal BZL", "Jashore JSR", "Rajshahi RJH", "Saidpur SPD", "Sylhet ZYL", "Dhaka DAC", "Cox''s Bazar CXB", "Chattogram CGP"]
+  
+  domesticPort.forEach((p) => {
+    if (p === departure) {
+      domesticPort.forEach((p) => {
+        if (p === destination) {
+          ipcRenderer.send("search-dom-flight-msg", {
+            d1: departDay,
+            d2: returnDay,
+            dc: departCity,
+            rc: destCity,
+            class: classType,
+          });
+          ipcRenderer.on("search-dom-flight-reply", (event, reply) => {
+            var el = document.getElementById('flight_cards_grid')
+            reply.forEach(obj=>{
+              let diffTime = (obj.arrival - obj.departure).toString()
+              let diffForm = diffTime.slice(0,-2) +'h ' + diffTime.slice(-2) + 'm'
+              el.insertAdjacentHTML('beforeend', `
+              <div class="relative flex flex-col justify-between h-48 border border-gray-900 rounded-xl bg-gray-700 p-4 font-['Arial'] overflow-x-hidden">
+                    <div class="flex flex-row justify-between">
+                      <div>
+                        <p class="text-xl text-center text-yellow-600">${departure.slice(-3)}</p>
+                        <p class="text-center text-slate-300 text-xs font-medium">${obj.departure}</p>
+                      </div>
+                      <div>
+                        <div class="flex items-center justify-center w-10 h-10 border border-slate-300 rounded-full">
+                          <i class="fas fa-plane text-yellow-500"></i>
+                        </div>
+                        <p class="text-center text-slate-300 text-xs font-medium">
+                        ${diffForm}
+                        </p>
+                      </div>
+                      <div>
+                        <p class="text-xl text-center text-yellow-600">${destination.slice(-3)}</p>
+                        <p class="text-center text-slate-300 text-xs font-medium">${obj.arrival}</p>
+                      </div>
+                    </div>
+
+                    <div>
+                      <div>
+                        <label class="text-gray-400 text-xs">Depart Date: </label>
+                        <span class="text-gray-200 text-sm">${departDate}</span>
+                      </div>
+                      <div>
+                        <label class="text-gray-400 text-xs">Flight Number: </label>
+                        <span class="text-gray-200 text-sm">${obj.flight_number}</span>
+                      </div>
+                      <div>
+                        <label class="text-gray-400 text-xs">Aircraft: </label>
+                        <span class="text-gray-200 text-sm">${obj.aircraft}</span>
+                      </div>
+                      
+                    </div>
+
+                    <button class="absolute right-0 bottom-0 bg-red-500 p-2 rounded-tl-md font-bold text-white tracking-wide" onclick="addPayInfo()">4554.14 TK</button>
+                  </div>
+              `)
+            })
+          });
+        }
+      });
+    }
+  });
+}
+  
+  
+  
+  /* <div class="relative flex flex-col justify-between h-48 border border-gray-900 rounded-xl bg-gray-700 p-4 font-['Arial'] overflow-x-hidden">
+                    <div class="flex flex-row justify-between">
+                      <div>
+                        <p class="text-xl text-center text-yellow-600">DAC</p>
+                        <p class="text-center text-slate-300 text-xs font-medium">21:30</p>
+                      </div>
+                      <div>
+                        <div class="flex items-center justify-center w-10 h-10 border border-slate-300 rounded-full">
+                          <i class="fas fa-plane text-yellow-500"></i>
+                        </div>
+                        <p class="text-center text-slate-300 text-xs font-medium">
+                          5h 25m
+                        </p>
+                      </div>
+                      <div>
+                        <p class="text-xl text-center text-yellow-600">CXB</p>
+                        <p class="text-center text-slate-300 text-xs font-medium">05:55</p>
+                      </div>
+                    </div>
+
+                    <div>
+                      <div>
+                        <label class="text-gray-400 text-xs">Depart Date: </label>
+                        <span class="text-gray-200 text-sm">Wednesday, Dec 29</span>
+                      </div>
+                      <div>
+                        <label class="text-gray-400 text-xs">Return Date: </label>
+                        <span class="text-gray-200 text-sm">Wednesday, Dec 29</span>
+                      </div>
+                      <div>
+                        <label class="text-gray-400 text-xs">Flight Number: </label>
+                        <span class="text-gray-200 text-sm">439</span>
+                      </div>
+                      <div>
+                        <label class="text-gray-400 text-xs">Aircraft: </label>
+                        <span class="text-gray-200 text-sm">738</span>
+                      </div>
+                      
+                    </div>
+
+                    <button class="absolute right-0 bottom-0 bg-red-500 p-2 rounded-tl-md font-bold text-white tracking-wide">4554.14 TK</button>
+                  </div> */
+  
+  
 
 
 
 
 
+function addPayInfo(){
+  document.getElementById('pay_info').checked = true
 
-
-
-
-
+}
+  
 
 
 /* sign out */
